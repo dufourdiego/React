@@ -41,3 +41,12 @@
   background-color: rgb(186, 186, 224);
   color: #000;
 }
+
+.carrito {
+  color: #000;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}

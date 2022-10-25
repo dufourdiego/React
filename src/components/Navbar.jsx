@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from './CartWidget';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Productos', 'Servicio', 'Contacto'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -37,7 +37,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar className='Nav' position="static">
+    <AppBar position="static">
       <Container className='Nav' maxWidth="xl">
         <Toolbar disableGutters>
           
@@ -72,6 +72,7 @@ function ResponsiveAppBar() {
               <MenuIcon />
             </IconButton>
             <Menu
+              className='Nav'
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -128,7 +129,9 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          <button><CartWidget /></button>
+          <a className='carrito' href="https://google.com">
+            <CartWidget />
+            </a>
             {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
