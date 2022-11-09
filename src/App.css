@@ -40,6 +40,17 @@
 .Nav {
   background-color: rgb(186, 186, 224);
   color: #000;
+  text-decoration: none;
+  }
+
+.Footer {
+  position:fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(186, 186, 224);
+  color: #000;
+  text-decoration: none;
+  padding: 0 10px;
 }
 
 .carrito {
@@ -49,4 +60,21 @@
 .logo {
   display: flex;
   justify-content: center;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  margin: 2em;
+  padding: 1em;
+  gap: 10px
+}
+
+.counter button{
+  background-color: rgb(213, 213, 226);
+  border: 1px inset #ddd;
+  }
+
+.counter button:hover{
+  cursor: pointer;
 }
