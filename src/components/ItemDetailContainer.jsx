@@ -15,7 +15,7 @@ export default function ItemDetailContainer() {
     const productoPromise = new Promise((res, rej) => {
       setTimeout(() => {
         res(productosHC.find(item => item.id == iditem));
-      }, 2000);
+      }, 100);
     });
 
     productoPromise.then((res) => {

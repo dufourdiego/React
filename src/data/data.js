@@ -91,7 +91,7 @@ export const productosHC = [
       precio: 80000,
       pictureURL: Monitor,
       category: "Monitores",
-      cantidad: 10
+      cantidad: 4
     },
     {
       id: 9,

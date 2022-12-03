@@ -10,9 +10,11 @@ import Footer from "./components/Footer";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Navbar from "./components/Navbar";
+import ContextContainer from './components/ContextContainer';
 
 export default function App() {
   return (
+    <ContextContainer>
     <BrowserRouter>
       {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS */}
       <Navbar />
@@ -30,5 +32,6 @@ export default function App() {
       {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS ABAJO DE TODO*/}
       <Footer />
     </BrowserRouter>
+    </ContextContainer>
   );
 }

@@ -15,12 +15,12 @@ export default function ItemListContainer() {
     const productosPromise = new Promise((res, rej) => {
       setTimeout(() => {
         res(productosHC);
-      },2000);
+      },100);
     });
 
     productosPromise.then((res) => {
       if (idcategory) {
-        setProductos(res.filter((item) => item.category == idcategory));
+        setProductos(res.filter((item) => item.category === idcategory));
       } else {
         setProductos(res);
       }
