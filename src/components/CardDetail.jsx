@@ -1,58 +1,59 @@
-import * as React from 'react';
+import React, { useState, useContext } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ItemCount from './ItemCount'
-import { Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import "./Item"
+import ItemCount from './ItemCount';
+import { CartContext } from '../context/CartContext';
 
 
 export default function MediaCard({producto}) {
 
+  const [goToCart, setGoToCart] = useState(false);
+  const {addProduct} = useContext(CartContext);
+  const imgCard = producto.imgUrl;
 const onAdd = (cantidad) => {
 
-  console.log(`Compraste ${cantidad} unidades`)
+  setGoToCart(true);
+  addProduct(producto, cantidad);
+  
 }
 
   return (
     
-    <Grid justifyContent="center">
-    <Card classes={{ label: 'cards' }} sx={{ maxWidth: 750 }}>
+    <Card sx={{ maxWidth: 900 }}>
       <CardMedia
         component="img"
-        height="800"
-        image = {producto.pictureURL}
-        alt="PC"
+        height="600"
+        image = {imgCard}
+        alt= {producto.nombre}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {producto.nombre}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {producto.desc}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {producto.detail}
-        </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-          Precio: ${producto.precio}           
+          {producto.descripcion}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
-          Stock: {producto.cantidad} unidades
+          {producto.detalle}
+        </Typography>
+        <Typography gutterBottom variant="h5" component="div">
+          ${producto.precio}
         </Typography>
       </CardContent>
       <CardActions>
-        <ItemCount initial={0} stock={producto.cantidad} onAdd={onAdd}/>
-      <Typography>
-        <Button>
-      <Link className="Nav" to="/">Volver al menú</Link>
-        </Button>
-      </Typography>
+        { goToCart ?
+                <Link to={"/checkout"}>Finalizar compra</Link>
+                :
+                <ItemCount initial={0} stock={producto.cantidad} onAdd={onAdd}/>
+
+          }
+        
       </CardActions>
     </Card>
-    </Grid>
   );
 }

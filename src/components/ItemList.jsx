@@ -8,7 +8,7 @@ function ItemList({productos}) {
   return (
     <div className='contenedor'>
       
-      <Grid container gap={3} marginTop={4} justifyContent="center" >
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} gap={3} margin={5} justify="center" >
   
       {!productos.length && "Loading..."}
       {productos.map((item) => (

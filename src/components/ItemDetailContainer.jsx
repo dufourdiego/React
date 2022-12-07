@@ -2,8 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./ItemDetailContainer";
-import { productosHC } from "../data/data"
+
+
 import ItemDetail from "./ItemDetail";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 export default function ItemDetailContainer() {
   const { iditem } = useParams();
@@ -12,15 +14,10 @@ export default function ItemDetailContainer() {
 
   useEffect(() => {
     
-    const productoPromise = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(productosHC.find(item => item.id == iditem));
-      }, 100);
-    });
-
-    productoPromise.then((res) => {
-        setProducto(res);
-    });
+    const db = getFirestore();
+    const auxDoc = doc(db, "productos", iditem);
+    getDoc(auxDoc)
+        .then(res => setProducto({ id: res.id, ...res.producto() }))
   }, [iditem]);
 
   return (
